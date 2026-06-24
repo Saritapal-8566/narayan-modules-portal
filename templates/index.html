@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narayan Moulds | CNC & VMC Machining Experts</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid font-bold text-2xl text-amber-500 fa-gears"></i>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight">NARAYAN MOULDS</h1>
+                    <p class="text-xs text-slate-400">Precision Machining & Tooling Ecosystem</p>
+                </div>
+            </div>
+            <nav class="flex gap-6 text-sm font-medium">
+                <a href="#" class="hover:text-amber-500 transition-colors">Home</a>
+                <a href="/catalog" class="hover:text-amber-500 transition-colors">Products & Services</a>
+                <a href="#quote-form" class="bg-amber-500 text-slate-900 px-4 py-1.5 rounded-md font-semibold hover:bg-amber-400 transition-colors">Request Quote</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Showcase Section -->
+    <section class="bg-slate-900 text-white py-20 px-4 border-t border-slate-800">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="text-amber-500 font-bold tracking-widest text-xs uppercase bg-amber-500/10 px-3 py-1 rounded-full">ISO Quality Standard Capabilities</span>
+            <h2 class="text-4xl md:text-5xl font-extrabold mt-4 mb-6">Advanced CNC & VMC Machining Job Work Solutions</h2>
+            <p class="text-slate-300 text-lg max-w-3xl mx-auto mb-8 leading-relaxed">
+                Equipped with specialized CAD/CAM software engines, premium cutting arrays, and high-performance CNC machining assets based out of Neemrana, Rajasthan.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <div class="bg-slate-800/80 px-6 py-3 rounded-lg border border-slate-700/50"><i class="fa-solid fa-circle-check text-amber-500 mr-2"></i>VMC Machining</div>
+                <div class="bg-slate-800/80 px-6 py-3 rounded-lg border border-slate-700/50"><i class="fa-solid fa-circle-check text-amber-500 mr-2"></i>Die Mould Machining</div>
+                <div class="bg-slate-800/80 px-6 py-3 rounded-lg border border-slate-700/50"><i class="fa-solid fa-circle-check text-amber-500 mr-2"></i>Custom Components</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Live Inventory Catalog -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        <div class="flex justify-between items-end mb-10 border-b border-slate-200 pb-4">
+            <div>
+                <h3 class="text-2xl font-bold text-slate-900">Featured Manufacturing Capabilities</h3>
+                <p class="text-slate-500 text-sm">Explore our standard production models and precision component catalog</p>
+            </div>
+            <a href="/catalog" class="text-sm font-semibold text-amber-600 hover:text-amber-700">View Full Catalog <i class="fa-solid fa-arrow-right ml-1"></i></a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for product in products %}
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200/80 hover:shadow-md transition-all flex flex-col justify-between overflow-hidden">
+                
+                <div class="w-full h-48 bg-slate-100 relative overflow-hidden">
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300">
+                </div>
+        
+                <div class="p-6">
+                    <div class="flex justify-between items-start gap-2 mb-3">
+                        <span class="text-xs uppercase font-bold tracking-wider px-2 py-0.5 bg-slate-100 text-slate-600 rounded">
+                            {{ product.category }}
+                        </span>
+                        <span class="text-sm font-bold text-slate-900">{{ product.price }}</span>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 mb-2">{{ product.name }}</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">{{ product.description }}</p>
+                    
+                    <div class="bg-slate-50 p-3 rounded-lg text-xs space-y-1.5 border border-slate-100">
+                        {% for key, val in product.specs.items() %}
+                        <div class="flex justify-between">
+                            <span class="text-slate-400">{{ key }}:</span> 
+                            <span class="font-medium text-slate-700">{{ val }}</span>
+                        </div>
+                        {% endfor %} </div>
+                </div>
+                <div class="p-4 bg-slate-50 border-t border-slate-100">
+                    <button onclick="selectProduct('{{ product.name }}')" class="w-full text-center text-xs font-bold bg-slate-900 text-white py-2 rounded-md hover:bg-slate-800 transition-colors cursor-pointer">
+                        Request Specific Quote
+                    </button>
+                </div>
+            </div>
+            {% endfor %} </div>   
+         </main>
+
+    <!-- Live Customer Engagement/Quote Module -->
+    <section id="quote-form" class="bg-slate-200 py-16 px-4">
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-5">
+            <div class="bg-slate-900 text-white p-8 md:col-span-2 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Corporate Contact</h3>
+                    <p class="text-sm text-slate-400 mb-6 leading-relaxed">Connect directly with our engineering sales desk for volume RFQs or specialized assembly job designs.</p>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-start gap-3"><i class="fa-solid fa-location-dot text-amber-500 mt-1"></i><span>Neemrana, Alwar,<br>Rajasthan, India</span></div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-phone text-amber-500"></i><span>+91-8043823249</span></div>
+                        <div class="flex items-center gap-3"><i class="fa-solid fa-id-card text-amber-500"></i><span>GST: 08**********1ZP</span></div>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-500 pt-6 border-t border-slate-800">
+                    Mentor & Leader: Mr. Satish<br>Owner: A. Yadav
+                </div>
+            </div>
+
+            <form action="/submit-inquiry" method="POST" class="p-8 md:col-span-3 space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-2">Send Instant RFQ</h3>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Full Name</label>
+                    <input type="text" name="name" required class="w-full border border-slate-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Email Address</label>
+                        <input type="email" name="email" required class="w-full border border-slate-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Phone Number</label>
+                        <input type="tel" name="phone" required class="w-full border border-slate-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Target Component / Service</label>
+                    <input type="text" id="target_product" name="product" placeholder="General Machining Project" class="w-full border border-slate-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 uppercase mb-1">Project Specification Scope</label>
+                    <textarea name="message" rows="3" required placeholder="Describe material tolerances, volume constraints, or sizing parameters required..." class="w-full border border-slate-300 rounded-md p-2 text-sm focus:outline-none focus:border-amber-500"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-amber-500 text-slate-900 py-2.5 rounded-md font-bold hover:bg-amber-400 transition-colors uppercase text-xs tracking-wider cursor-pointer">
+                    Transmit RFQ to Factory
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 text-slate-500 text-xs py-6 text-center border-t border-slate-900">
+        &copy; 2026 Narayan Moulds Machining Ecosystem. Driven by Industrial Automation.
+    </footer>
+
+    <script>
+        function selectProduct(name) {
+            const inputField = document.getElementById('target_product');
+            inputField.value = name;
+            document.getElementById('quote-form').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
